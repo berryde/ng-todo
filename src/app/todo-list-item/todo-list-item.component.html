@@ -1,3 +1,5 @@
-<p>Id: {{this.todo.id}}</p>
-<p>Text: {{this.todo.text}}</p>
-<p>Completed: {{this.todo.completed}}</p>
+
+<div class="flex items-center justify-between py-3 px-5 rounded shadow bg-white w-full">
+  <p>{{this.todo.text}}</p>
+  <input type="checkbox" value="{{this.todo.completed}}">
+</div>

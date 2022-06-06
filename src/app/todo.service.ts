@@ -15,6 +15,6 @@ export class TodoService {
   }
 
   public getTodos(): Observable<Todo[]> {
-    return this.http.get<Todo[]>(API + "/tasks")
+    return this.http.get<Todo[]>(API + "/tasks/")
   }
 }
