@@ -1,5 +1,7 @@
-
 <div class="flex items-center justify-between py-3 px-5 rounded shadow bg-white w-full">
   <p>{{this.todo.text}}</p>
-  <input type="checkbox" value="{{this.todo.completed}}">
+  <div class="flex items-center space-x-3">
+    <input type="checkbox" [checked]="this.todo.completed" (click)="onToggle()">
+    <p class="text-red-500 font-bold cursor-pointer" (click)="onDelete()">✕</p>
+  </div>
 </div>

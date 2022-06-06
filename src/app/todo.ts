@@ -1,11 +1,11 @@
 interface ITodo {
-  id: string;
+  id?: string;
   text: string;
   completed: boolean;
 }
 
 export class Todo implements ITodo {
-  public id!: string;
+  public id?: string;
   public text!: string;
   public completed!: boolean;
 
