@@ -1,3 +1,3 @@
 <div class="flex flex-col space-y-3">
-  <app-todo-list-item *ngFor="let todo of todos" [todo]="todo" (toggleEmitter)="onToggle($event)" (deleteEmitter)="onDelete($event)"></app-todo-list-item>
+  <app-todo-list-item *ngFor="let task of tasks" [todo]="task" (toggleEmitter)="onToggle($event)" (deleteEmitter)="onDelete($event)"></app-todo-list-item>
 </div>

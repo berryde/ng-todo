@@ -1,5 +1,7 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
-import { Todo } from '../todo';
+import { Task } from '../task';
+import { TaskDataService } from '../task-data.service';
+import { FormBuilder } from '@angular/forms';
 
 @Component({
   selector: 'app-todo-form',
@@ -7,17 +9,23 @@ import { Todo } from '../todo';
   styleUrls: ['./todo-form.component.css'],
 })
 export class TodoFormComponent implements OnInit {
-  text: string = '';
+  todoForm = this.formBuilder.group({
+    text: '',
+  });
 
-  @Output()
-  addEmitter: EventEmitter<Todo> = new EventEmitter<Todo>();
-
-  constructor() {}
+  constructor(
+    private taskDataService: TaskDataService,
+    private formBuilder: FormBuilder
+  ) {}
 
   ngOnInit(): void {}
 
   onAdd(): void {
-    this.addEmitter.emit(new Todo({ completed: false, text: this.text }));
-    this.text = '';
+    if (this.todoForm.value.text) {
+      this.taskDataService.addTask(
+        new Task({ completed: false, text: this.todoForm.value.text })
+      );
+      this.todoForm.reset();
+    }
   }
 }

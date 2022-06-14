@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Todo } from '../todo';
+import { Task } from '../task';
 
 @Component({
   selector: 'app-todo-list-item[todo]',
@@ -8,13 +8,13 @@ import { Todo } from '../todo';
 })
 export class TodoListItemComponent implements OnInit {
   @Input()
-  todo!: Todo;
+  todo!: Task;
 
   @Output()
-  toggleEmitter: EventEmitter<Todo> = new EventEmitter<Todo>();
+  toggleEmitter: EventEmitter<Task> = new EventEmitter<Task>();
 
   @Output()
-  deleteEmitter: EventEmitter<Todo> = new EventEmitter<Todo>();
+  deleteEmitter: EventEmitter<Task> = new EventEmitter<Task>();
 
   constructor() {}
 

@@ -1,15 +1,15 @@
-interface ITodo {
+interface ITask {
   id?: string;
   text: string;
   completed: boolean;
 }
 
-export class Todo implements ITodo {
+export class Task implements ITask {
   public id?: string;
   public text!: string;
   public completed!: boolean;
 
-  constructor(props: ITodo) {
+  constructor(props: ITask) {
     Object.assign(this, props);
   }
 }

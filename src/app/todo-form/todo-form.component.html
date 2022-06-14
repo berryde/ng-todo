@@ -1,4 +1,4 @@
-<div class="flex space-y-3 flex-col sm:flex-row sm:space-y-0 sm:space-x-3">
-  <input placeholder="Task description" class="rounded shadow py-2 px-3 sm:flex-grow" [(ngModel)]="text" />
-  <button class="px-3 py-2 sm:max-w-max bg-emerald-600 text-white rounded" (click)="onAdd()">Add task</button>
-</div>
+<form class="flex space-y-3 flex-col sm:flex-row sm:space-y-0 sm:space-x-3" [formGroup]="todoForm" (ngSubmit)="onAdd()">
+  <input placeholder="Task description" class="rounded shadow py-2 px-3 sm:flex-grow" type="text" formControlName="text" />
+  <button class="px-3 py-2 sm:max-w-max bg-emerald-600 text-white rounded" type="submit">Add task</button>
+</form>

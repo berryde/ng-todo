@@ -5,9 +5,9 @@ import { AppComponent } from './app.component';
 import { TodoListComponent } from './todo-list/todo-list.component';
 import { TodoListItemComponent } from './todo-list-item/todo-list-item.component';
 import { HttpClientModule } from '@angular/common/http';
-import { TodoService } from './todo.service';
+import { TaskHttpService } from './task-http.service';
 import { TodoFormComponent } from './todo-form/todo-form.component';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,8 +16,8 @@ import { FormsModule } from '@angular/forms';
     TodoListItemComponent,
     TodoFormComponent,
   ],
-  imports: [BrowserModule, HttpClientModule, FormsModule],
-  providers: [TodoService],
+  imports: [BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule],
+  providers: [TaskHttpService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

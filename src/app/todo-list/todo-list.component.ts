@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Todo } from '../todo';
+import { Task } from '../task';
+import { TaskDataService } from '../task-data.service';
 
 @Component({
   selector: 'app-todo-list',
@@ -8,23 +9,19 @@ import { Todo } from '../todo';
 })
 export class TodoListComponent implements OnInit {
   @Input()
-  todos: Todo[] = [];
+  tasks: Task[] = [];
 
-  @Output()
-  toggleEmitter: EventEmitter<Todo> = new EventEmitter<Todo>();
+  constructor(private taskDataService: TaskDataService) {}
 
-  @Output()
-  deleteEmitter: EventEmitter<Todo> = new EventEmitter<Todo>();
-
-  constructor() {}
-
-  ngOnInit(): void {}
-
-  onToggle(todo: Todo) {
-    this.toggleEmitter.emit(todo);
+  ngOnInit(): void {
+    this.taskDataService.tasks.subscribe((tasks) => (this.tasks = tasks));
   }
 
-  onDelete(todo: Todo) {
-    this.deleteEmitter.emit(todo);
+  onToggle(task: Task) {
+    this.taskDataService.toggleTask(task);
+  }
+
+  onDelete(task: Task) {
+    this.taskDataService.deleteTask(task);
   }
 }
