@@ -21,10 +21,9 @@ export class TodoFormComponent implements OnInit {
   ngOnInit(): void {}
 
   onAdd(): void {
+    console.log('Running', this.todoForm.value);
     if (this.todoForm.value.text) {
-      this.taskDataService.addTask(
-        new Task({ completed: false, text: this.todoForm.value.text })
-      );
+      this.taskDataService.addTask(this.todoForm.value.text);
       this.todoForm.reset();
     }
   }

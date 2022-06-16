@@ -10,10 +10,6 @@ export class TaskDataService {
   tasks: BehaviorSubject<Task[]> = new BehaviorSubject<Task[]>([]);
 
   constructor(private taskHttpService: TaskHttpService) {
-    this.refresh();
-  }
-
-  refresh() {
     this.taskHttpService.getAll().subscribe((tasks) => this.tasks.next(tasks));
   }
 
@@ -31,9 +27,14 @@ export class TaskDataService {
     });
   }
 
-  addTask(task: Task) {
+  addTask(text: string) {
+    const task = new Task({ completed: false, text: text });
     this.taskHttpService
       .add(task)
       .subscribe((task) => this.tasks.next([...this.tasks.getValue(), task]));
+  }
+
+  getTasks(): BehaviorSubject<Task[]> {
+    return this.tasks;
   }
 }

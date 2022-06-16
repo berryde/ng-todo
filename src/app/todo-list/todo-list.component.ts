@@ -14,7 +14,7 @@ export class TodoListComponent implements OnInit {
   constructor(private taskDataService: TaskDataService) {}
 
   ngOnInit(): void {
-    this.taskDataService.tasks.subscribe((tasks) => (this.tasks = tasks));
+    this.taskDataService.getTasks().subscribe((tasks) => (this.tasks = tasks));
   }
 
   onToggle(task: Task) {

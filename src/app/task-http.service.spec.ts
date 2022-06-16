@@ -13,16 +13,17 @@ describe('TodoService', () => {
   let taskMock: Task;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({
-      imports: [HttpClientTestingModule],
-    });
-    service = TestBed.inject(TaskHttpService);
-    httpMock = TestBed.inject(HttpTestingController);
     taskMock = new Task({
       id: '9add5df4-2c31-4721-b3e2-dc7e67de36f3',
       text: 'Prepare lunch',
       completed: true,
     });
+
+    TestBed.configureTestingModule({
+      imports: [HttpClientTestingModule],
+    });
+    service = TestBed.inject(TaskHttpService);
+    httpMock = TestBed.inject(HttpTestingController);
   });
 
   it('should be created', () => {
@@ -69,9 +70,5 @@ describe('TodoService', () => {
       expect(request.request.method).toBe('POST');
       expect(request.request.body).toBe(taskMock);
     });
-  });
-
-  afterEach(() => {
-    httpMock.verify();
   });
 });
